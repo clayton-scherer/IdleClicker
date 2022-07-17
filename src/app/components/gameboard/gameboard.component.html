@@ -1,4 +1,13 @@
-<app-counter class="min-w-full" [count]=count></app-counter>
-  <div (click)="incremenetCount()" class="flex justify-center max-w-lg py-10 px-20 cursor-pointer bg-slate-500">
-    <img class="p-3" src="../assets/heroImg.png" alt="Hero">
+<ng-container class="flex-col">
+  <app-counter class="flex justify-center" [count]=count></app-counter>
+  <div class="grid grid-cols-3 gap-4">
+    <div (click)="incremenetCount()" class="flex col-start-2 col-span-1 justify-center cursor-pointer select-none bg-slate-500">
+      <img class="p-3" src="../assets/heroImg.png" alt="Hero">
+    </div>
+    <div class="flex-col col-span-1 w-full">
+      <button [ngClass]="count > digitPrice ? 'bg-green-300' : 'bg-red-300'" [disabled]="count < digitPrice" (click)="purchaseExtraDigit()" class="rounded-3xl min-w-full p-2 my-1">An Extra Digit: Costs - {{digitPrice}} Rubies</button>
+      <button [ngClass]="count > handPrice ? 'bg-green-300' : 'bg-red-300'" [disabled]="count < handPrice" (click)="purchaseExtraHand()" class="rounded-3xl min-w-full p-2 my-1">An Extra Hand: Costs - {{handPrice}} Rubies</button>
+      <button [ngClass]="count > feetPrice ? 'bg-green-300' : 'bg-red-300'" [disabled]="count < feetPrice" (click)="purchaseExtraFeet()" class="rounded-3xl min-w-full p-2 my-1">Two Left Feet: Costs - {{feetPrice}} Rubies</button>
+    </div>
   </div>
+</ng-container>
